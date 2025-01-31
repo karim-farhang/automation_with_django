@@ -1,0 +1,2 @@
+id,password,last_login,is_superuser,username,first_name,last_name,email,is_staff,is_active,date_joined
+1,pbkdf2_sha256$870000$W2c7Ax2uk6Iq5vKvM3RZWP$jlpvFSQpbw1Nzuaw45G6z55VUCbPvEHUYX3HLHXABqk=,2025-01-30 16:45:49.268103+00:00,True,kairm,,,,True,True,2025-01-30 16:44:46.897542+00:00
