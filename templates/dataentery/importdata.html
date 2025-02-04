@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+
+
+<body>
+
+
+    <style>
+        form {
+            padding: 100px;
+            border: 1px solid rebeccapurple;
+            margin: 200px;
+            border-radius: 15px;
+            box-shadow: 1px 2px 3px blueviolet;
+        }
+
+        h1 {
+            font-size: xx-large;
+        }
+
+        input .file_choice {
+            width: 300px;
+            height: 40px;
+            border: solid rebeccapurple;
+            border: 15px;
+        }
+    </style>
+
+
+    <center>
+
+        <form action="{% url 'import_data' %}" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+
+            <h1>Import data to database</h1><br>
+
+            <input style="width: 300px; height: 40px; border: solid 1px rebeccapurple; border-radius: 15px;" type="file"
+                name="file_path" placeholder="choice you csv file" required><br>
+            <br>
+            <select style="width: 300px; height: 40px; border: solid 1px rebeccapurple; border-radius: 15px;"
+                name="model_name" id="" required>
+                {% for mode in models %}
+                <option value="{{mode}}">{{mode}}</option>
+                {% endfor %}
+            </select><br><br>
+
+            <input style="width: 300px; height: 40px; border: solid 1px rebeccapurple; border-radius: 15px;"
+                type="submit" value="import">
+            <br>
+
+            {{ error }}
+
+        </form>
+
+    </center>
+
+</body>
+
+</html>
