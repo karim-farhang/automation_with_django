@@ -10,13 +10,10 @@ def celery_test_task():
 
 
 @app.task
-def celery_import_data_task(file_path=None, model_name=None):
-    if (file_path and model_name) is not None:
-        try:
-            call_command('importdata', file_path, model_name)
-        except Exception as e:
-            raise e
-        return 'data imported successfuly'
-    else:
-        raise f'file path {file_path} or model name {model_name} is none'
-    
+def celery_import_data_task(file_path, model_name):
+    try:
+        call_command('importdata', file_path, model_name)
+    except Exception as e:
+        raise e
+    return 'Data imported succssfulty'
+
