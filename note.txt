@@ -1,0 +1,37 @@
+Technical Terms in Celery
+
+Task
+Celery Workers
+Message Broker
+Result Backend
+Celery Beat
+
+
+pip install celery 
+pip install redis
+
+Redis for windows github
+
+Redis-x64-5.0.15.5.mis 
+port is 6379
+
+for stop runing taks of redis -------------------------
+tasklist | findstr redis
+taskkill /PID 7084 /F
+
+
+for stop runing task to celery ----------------------------
+tasklist | findstr celery
+celery.exe         12345 Console                    1    10,000 K
+taskkill /PID 12345 /F
+
+
+
+
+terminal => redis-server
+terminal => redis-cli ping 
+ PONG
+
+terminal => celery -A config worker --loglevel=info --pool=solo
+
+terminal => djanog 

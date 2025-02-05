@@ -15,5 +15,5 @@ def celery_import_data_task(file_path, model_name):
         call_command('importdata', file_path, model_name)
     except Exception as e:
         raise e
-    return 'Data imported succssfulty'
+    return 'Data imported successfully'
 
