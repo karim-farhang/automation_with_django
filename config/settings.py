@@ -1,9 +1,11 @@
 from django.contrib.messages import constants as messages
 from pathlib import Path
+from decouple import config
+from django.contrib.messages import constants as messages
+from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-re6ut9rue^hr3yxqfkuxa*k4q$x_2f$cwv55fn&en95bl6lxn%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -116,10 +118,12 @@ MESSAGE_TAGS = {messages.ERROR: 'danger', 50: "critical", }
 CELERY_BROKER_URL = 'redis://localhost:6379'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'karim.work.ai@gmail.com'
-EMAIL_HOST_PASSWORD = 'abcd efgh ijkl mnop'  # Use app-specific password if 2FA is enabled
-DEFAULT_FROM_EMAIL = 'karim.work.ai@gmail.com'
+SECRET_KEY = config('SECRET_KEY')
+
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
+
+
