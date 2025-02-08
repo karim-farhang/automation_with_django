@@ -1,8 +1,6 @@
 from django.contrib.messages import constants as messages
 from pathlib import Path
 from decouple import config
-from django.contrib.messages import constants as messages
-from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dataEntry',
     'uploads',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -118,12 +117,18 @@ MESSAGE_TAGS = {messages.ERROR: 'danger', 50: "critical", }
 CELERY_BROKER_URL = 'redis://localhost:6379'
 
 
+
 SECRET_KEY = config('SECRET_KEY')
 
+# Email Configuration
+EMAIL_BACKEND = config('EMAIL_BACKEND')
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+DEFAULT_TO_EMAIL = config('DEFAULT_TO_EMAIL')
 
 
